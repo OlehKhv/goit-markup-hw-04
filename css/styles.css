@@ -6,6 +6,7 @@
   --main-hero-color: #ffffff;
   --logo-color: #4d5ae5;
   --active-color: #404bbf;
+  --border-color: #e7e9fc;
 }
 
 ul,
@@ -31,6 +32,7 @@ dd {
 }
 
 body {
+  min-height: 100vh;
   color: var(--text-color, #434455);
   background-color: var(--main-bg-color, #ffffff);
   font-family: 'Roboto', sans-serif;
@@ -93,7 +95,7 @@ ol {
 .header {
   padding-top: 24px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #e7e9fc;
+  border-bottom: 1px solid var(--border-color, #e7e9fc);
 }
 
 .header-container {
@@ -165,10 +167,21 @@ ol {
 /* Hero */
 
 .hero {
+  max-width: 1440px;
+  min-height: 600px;
   background-color: var(--main-color, #2e2f42);
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/bg-img.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   text-align: center;
 
+  margin: 0 auto;
   padding-top: 188px;
   padding-bottom: 188px;
 }
@@ -217,8 +230,32 @@ ol {
   gap: 24px;
 }
 
-.features-list > li {
-  width: 264px;
+.features-list-item {
+  flex-basis: calc((100% - 72px) / 4);
+}
+.features-list-item::before {
+  display: block;
+  content: '';
+  min-height: 112px;
+  background-color: #f4f4fd;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.features-list-item:nth-child(1)::before {
+  background-image: url(../images/icons/antenna.svg);
+}
+
+.features-list-item:nth-child(2)::before {
+  background-image: url(../images/icons/clock.svg);
+}
+
+.features-list-item:nth-child(3)::before {
+  background-image: url(../images/icons/diagram.svg);
+}
+
+.features-list-item:nth-child(4)::before {
+  background-image: url(../images/icons/astronaut.svg);
 }
 
 .section-subtitle {
@@ -278,8 +315,59 @@ ol {
 }
 
 .card-text {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding: 32px 16px;
+}
+
+.cards-list-item .section-text {
+  margin-bottom: 8px;
+}
+
+.social-list {
+  display: flex;
+  gap: 24px;
+}
+
+.social-list-item {
+  width: 40px;
+  height: 40px;
+  background-color: var(--logo-color, #4d5ae5);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.social-list-item:nth-child(1) {
+  background-image: url(../images/icons/instagram.svg);
+}
+
+.social-list-item:nth-child(2) {
+  background-image: url(../images/icons/twitter.svg);
+}
+
+.social-list-item:nth-child(3) {
+  background-image: url(../images/icons/facebook.svg);
+}
+
+.social-list-item:nth-child(4) {
+  background-image: url(../images/icons/linkedin.svg);
+}
+
+/* Customers */
+
+.customers-list {
+  display: flex;
+  gap: 24px;
+}
+
+.customers-list-item {
+  border: 1px solid #8e8f99;
+  border-radius: 4px;
+  width: calc((100% - 24px) / 6);
+  /* height: 88px; */
+  padding: 16px 32px;
+}
+
+.customers-list-item > a {
 }
 
 /* Portfolio*/
@@ -305,7 +393,7 @@ ol {
   letter-spacing: 0.04em;
 
   padding: 12px 24px;
-  border: 1px solid #e7e9fc;
+  border: 1px solid var(--border-color, #e7e9fc);
   border-radius: 4px;
 }
 
@@ -320,10 +408,17 @@ ol {
   gap: 48px 24px;
 }
 
-.examples-list-item .card-text {
-  padding-left: 16px;
+/* .examples-list-item {
+  height: 420px;
+} */
 
-  border: 1px solid #e7e9fc;
+.examples-list-item:hover {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.examples-list-item .card-text {
+  border: 1px solid var(--border-color, #e7e9fc);
   border-top: none;
 }
 
@@ -331,14 +426,19 @@ ol {
 
 .footer {
   background: var(--main-color, #2e2f42);
-  color: var(--accent-color, #f4f4fd);
+  color: var(--main-hero-color, #ffffff);
 
   padding-top: 100px;
   padding-bottom: 100px;
 }
 
+.footer-content {
+  display: flex;
+}
+
 .footer-text {
   width: 264px;
+  margin-right: 120px;
 }
 
 .footer-text > a {
@@ -347,4 +447,25 @@ ol {
 
 .footer-logo {
   color: var(--accent-color, #f4f4fd);
+}
+
+.footer-text > p {
+  color: var(--accent-color, #f4f4fd);
+}
+
+.footer-social {
+  margin-right: 80px;
+}
+
+.footer-social > p {
+  margin-bottom: 16px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.footer-social > .social-list {
+  gap: 16px;
 }
